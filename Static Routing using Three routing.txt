@@ -1,0 +1,99 @@
+Static Routing using Three routing
+
+Pune
+en
+conf t
+lien vty 0 4
+password kiran
+exit
+
+line con 0 
+password kiran
+exit
+
+
+kine aux 0
+password kiran
+exit
+
+int fa0/0
+ip add 192.168.10.1 255.255.255.0
+no shut
+exit
+
+int s0/0
+ip add 10.0.0.1 255.0.0.0
+clock rate 6400
+band 64
+
+ip route 192.168.2.0 255.255.255.0 10.0.0.2 
+ip route 192.168.3.0 255.255.255.0 10.0.0.2
+ip 11.0.0.0 25.0.0.0 10.0.0.2
+
+
+Mumbai 
+en
+conf t
+
+line con 0
+password kiran
+exit
+
+line vty 0 4
+password kiran 
+exit
+
+line aux 0
+password kiran
+
+
+int fa0/0
+ip add 192.168.20.1 255.255.255.0 
+no shut 
+exit
+
+int s0/0
+ip add 10.0.0.2 255.0.0.0 
+no shut
+exit
+
+int s0/1
+ip add 11.0.0.1 255.0.0.0
+clock rate 64000
+band 64
+exit 
+
+ip route 192.168.10.0 255.255.255.0. 10.0.0.1
+ip route 192.168.30.0 255.255.255.0 11.0.0.2
+
+
+
+Solapur
+
+en 
+conf t
+
+line con 0
+password kiran
+exit
+
+line aux 0 
+password kiran
+exit
+
+line vty 0 4
+password kiran
+
+int fa0/0
+ip add 192.168.30.1 255.255.255.0 
+no shut
+exit
+
+int s0/1
+ip add 11.0.0.2 255.0.0.0
+no shut 
+exit
+
+ip route 192.168.20.0 255.255.255.0 11.0.0.1
+ip route 192.168.10.0 255.255.255.0 11.0.0.1
+ip route 10.0.0.0 255.0.0.0 11.0.0.1
